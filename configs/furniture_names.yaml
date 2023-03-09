@@ -1,0 +1,21 @@
+lookupShapeType:
+  desk: desk
+  table: dining_table
+  dining_table: dining_table
+  coffee_table: coffee_table
+  cabinet: cabinet
+  door: door,
+  chair: chill_chair
+  dining_chair: dining_chair
+  drawer: cabinet
+  shelf: shelf
+  nightstand: nightstand
+  bed: bed,
+  office_chair: office_chair
+  sofa: sofa
+  sofa_chair: sofa_chair
+  mini_sofa: sofa_chair
+  dresser: dresser,
+  tv: tv
+  lamp: lamp
+  plant: plant

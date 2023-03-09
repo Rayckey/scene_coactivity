@@ -1,0 +1,5 @@
+MODEL_CATEGORY_FILE: /home/rocky/SunCG/SUNCGtoolbox/metadata/ModelCategoryMapping.csv
+MODELS_FILE: /home/rocky/SunCG/SUNCGtoolbox/metadata/models.csv
+SUNCG_PATH: /media/rocky/Seagate Expansion Drive/SUNCG
+MODEL_PATH : /media/rocky/Seagate Expansion Drive/SUNCG/object
+MODEL_CATEGORY_MAP_FILE: ./suncg/category_mapping.csv
