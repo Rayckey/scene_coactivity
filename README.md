@@ -19,8 +19,8 @@ Tested on clean ubuntu 18.04 & 20.04 with Python 3.8+.
 ## Install
 Please set up a virtual environemnt first
 ```bash
-git clone --recursive git@github.com:Rayckey/coactivity.git scene_coactivity
-cd coactivity
+git clone --recursive git@github.com:Rayckey/scene_coactivity.git scene_coactivity
+cd scene_coactivity
 virtualenv coactivity
 source coactivity/bin/activate
 pip3 install -r requirements.txt # or pip if you don't have python 2 installed
@@ -42,9 +42,9 @@ MODEL_PATH : ....../object
 ## Collecting Data
 This script collects pre-compiled SUNCG room data and learns the distribution. The learned binaries are already included in this git repo.
 
-Example:
+Example of collecting the bedroom data and learning the spatial and co-occurance relation:
 ```bash
-python3 scripts/process_posnet.py -r bedroom -r -c -p -o
+python3 scripts/process_posnet.py -r bedroom -c -p -o
 ```
 
 Optional arguments: 
@@ -59,7 +59,7 @@ Optional arguments:
 | -o --occ		       | False           | Learn the co-occurance relation.
 
 
-The images and pickle files are generated under ``./suncg/data/graphs/``
+The images and pickle files are generated under ``./suncg/data/graphs/``. Both collecting and learning can take up to an hour.
 
 ## Scene Reinvention
 You can perform scene reinvention using this script. There are some rooms already compiled in `rooms/suncg/`, but you may copy any room out of `suncg/data/graphs/` if you have previously completed the *Collecting Data* step.
