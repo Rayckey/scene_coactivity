@@ -1,4 +1,6 @@
 # Rearrange Indoor Scenes for Human-Robot Co-Activity
+![18](https://img.shields.io/badge/Ubuntu-18.04-blue) ![20](https://img.shields.io/badge/Ubuntu-20.04-blue)
+
 This is an optimization-based framework for rearranging indoor furniture to accommodate human-robot co-activities better. The rearrangement aims to afford sufficient accessible space for robot activities without compromising everyday human activities.
 
 Link to Paper; 
@@ -78,6 +80,8 @@ Arguments:
 
 When a room is rearranged for the first time, relevant object semantic relations are queried from [Conceptnet](https://conceptnet.io/) as a part of human preference. This may take some time. Temporary files can be found under ``./buffer``.
 
+Optimization uses the weights defined in ``./configs/weights.yaml``.
+
 The pickle results are generated under ``./results``. The results are distingushed by the order of functional groups and search method. The final results will have the ID of "-1". For example: ``bedroom_473_layered_-1_cma`` is the results for all functional groups after Covariance Matrix Adaptation Evolution Strategy, while ``bedroom_473_layered_3`` is the results for the third functional groups after Adaptive Simulated Annealing.
 
 
@@ -98,7 +102,7 @@ python3 scripts/scene_visualization.py -r bedroom_473_layered_-1_cma
 Arguments: 
 | Parameter                 | Default       | Description   |	
 | :------------------------ |:-------------:| :-------------|
-| -i --room_id       |	""           |the room_id to be shown, ignored if there is no input.
+| -i --room_id       |	""           |the original room_id to be shown, ignored if there is no input.
 | -r  --results         | ""           |the optimized result to be shown, ignored if there is no input.
 | -g --gif 	       |	False	            |generate rotating gifs for output.
 | -s --sequence		       | False           |generate optimization sequence image, only works with --results input, not compatible with --gif
