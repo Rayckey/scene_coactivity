@@ -409,7 +409,7 @@ class LayeredManager(OptimizationManager):
     def solve(self):
         objectives = []
         objectives += ['collision']
-        objectives += ['affordance']
+        objectives += ['interaction']
         objectives += ['anti']
         objectives += ['planning']
         objectives += ['relation']

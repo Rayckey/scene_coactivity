@@ -139,13 +139,13 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--resolution', type=int, default=700,
                         help='Define the square image resolution (default: 700)')
 
-    parser.add_argument('-b', '--reachable', help='Overlay the output scene with (B)lue reachable space (default: False)',
+    parser.add_argument('-b', '--accessible', help='Overlay the output scene with (B)lue accessible space (default: False)',
                         action='store_true')
 
     parser.add_argument('-l', '--path', help='Overlay the output scene with robot path (L)ine (default: False)',
                         action='store_true')
 
-    parser.add_argument('-a', '--affordance', help='Overlay the output scene with (A)ffordance (default: False)',
+    parser.add_argument('-a', '--interaction', help='Overlay the output scene with (A)ffordance (default: False)',
                         action='store_true')
 
     parser.add_argument('-c', '--color', help='(C)olor-code the funiture in the output scene.) (default: False)',
@@ -169,7 +169,7 @@ if __name__ == '__main__':
             print("Original rooms cannot have sequence")
 
         else:
-            viewSingleRoom(room_name, args.gif, args.reachable, args.affordance, args.path,
+            viewSingleRoom(room_name, args.gif, args.accessible, args.interaction, args.path,
                            args.color, args.robot, args.resolution)
 
     # view results
@@ -179,9 +179,9 @@ if __name__ == '__main__':
             res_name = os.path.join('./results', args.results)
 
         if args.sequence:
-            viewSeriesRooms(res_name, args.reachable, args.affordance, args.path,
+            viewSeriesRooms(res_name, args.accessible, args.interaction, args.path,
                             args.color, args.resolution)
 
         else:
-            viewFinalRoom(res_name, args.gif, args.reachable, args.affordance, args.path,
+            viewFinalRoom(res_name, args.gif, args.accessible, args.interaction, args.path,
                           args.color, args.resolution)

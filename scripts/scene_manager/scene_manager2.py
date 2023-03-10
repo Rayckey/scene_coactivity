@@ -386,7 +386,7 @@ class SceneManager():
                 collision2energy(collision_dist)
             cost += collision_cost
 
-        if 'affordance' in self.objectives:
+        if 'interaction' in self.objectives:
             # not using the extended sdf to save memory, hope this works well
             aff = 0
             # aff_total = 0
@@ -406,10 +406,10 @@ class SceneManager():
 
                 # cc.append(ratio_cost(aff_total-aff, aff_total))
 
-            # aff_cost = WEIGHTS['affordance'] * np.sum(cc)/len(cc)
-                # aff_cost = WEIGHTS['affordance'] * ratio_cost(aff_total-aff, aff_total)
-            # aff_cost = WEIGHTS['affordance'] * (1.0 - low_satuating_cost(aff))*2
-                aff_cost = WEIGHTS['affordance'] * \
+            # aff_cost = WEIGHTS['interaction'] * np.sum(cc)/len(cc)
+                # aff_cost = WEIGHTS['interaction'] * ratio_cost(aff_total-aff, aff_total)
+            # aff_cost = WEIGHTS['interaction'] * (1.0 - low_satuating_cost(aff))*2
+                aff_cost = WEIGHTS['interaction'] * \
                     (1.0 - low_satuating_cost(aff))*2
                 cost += aff_cost
 
@@ -508,7 +508,7 @@ class SceneManager():
                 # # OPPOSE = self.getOpposeCost(idx_n=id2, idx_p=id1, val=PARALLEL)
                 # # ORTHOGONAL = self.getOrthogonalCost(idx_n=id2, idx_p=id1, val=PARALLEL) # id1 facing opposite direction as id2
 
-                # # SHARED = self.getSharedCost(idx_n=id2, idx_p=id1) # id1 and id2 affordance overlay
+                # # SHARED = self.getSharedCost(idx_n=id2, idx_p=id1) # id1 and id2 interaction overlay
                 # # SHARED_MAX = np.sum(
                 #     # self.approch[id1]) if SHARED is not None else 0
 
@@ -936,7 +936,7 @@ class SceneManager():
                 # OPPOSE = self.getOpposeCost(idx_n=id2, idx_p=id1, val=PARALLEL)
                 # ORTHOGONAL = self.getOrthogonalCost(idx_n=id2, idx_p=id1, val=PARALLEL) # id1 facing opposite direction as id2
 
-                # SHARED = self.getSharedCost(idx_n=id2, idx_p=id1) # id1 and id2 affordance overlay
+                # SHARED = self.getSharedCost(idx_n=id2, idx_p=id1) # id1 and id2 interaction overlay
                 # SHARED_MAX = np.sum(
                 # self.approch[id1]) if SHARED is not None else 0
 
