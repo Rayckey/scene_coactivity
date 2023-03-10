@@ -75,13 +75,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Arguments for differnt options of SunCG data processing.')
     parser.add_argument('--room', type=str, default='living',
-                        help='define room type to be iterated (default: living)')
-    parser.add_argument('--idx', type=int, default=381,
-                        help='define the number of the selected room type')
+                        help='define room category.')
+    parser.add_argument('--idx', type=int, default=None,
+                        help='define the room ID from the selected room category.')
     parser.add_argument('--GUI', type=bool, default=False,
-                        help='define whether GUI will be used (default: False)')
+                        help='define whether the GUI powered by Pybullet will be displayed. This will show the optimization process in real time')
     parser.add_argument('--images', type=bool, default=False,
-                        help='define whether buffer images will be generated (default: False)')
+                        help='define whether debug images will be generated.')
     parser.add_argument('--robot', type=str, default='dingo',
                         help="define the robot's base size(default: dingo, options: dingo, husky)")
     args = parser.parse_args()

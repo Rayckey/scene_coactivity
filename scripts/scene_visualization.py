@@ -128,27 +128,27 @@ if __name__ == '__main__':
                         help='the room_id to be shown, ignored if there is no input.')
 
     parser.add_argument('-r', '--results', type=str, default="",
-                        help='the results to be shown, ignored if there is no input.')
+                        help='the optimized result to be shown, ignored if there is no input.')
 
-    parser.add_argument('-g', '--gif', help='Generate rotating gifs for the rooms (default: False)',
+    parser.add_argument('-g', '--gif', help='generate rotating gifs for output.',
                         action='store_true')
 
-    parser.add_argument('-s', '--sequence', help='Generate optimization sequence image (default: False), only works with --results input, not compatible with --gif',
+    parser.add_argument('-s', '--sequence', help='generate optimization sequence image, only works with --results input, not compatible with --gif',
                         action='store_true')
 
     parser.add_argument('-p', '--resolution', type=int, default=700,
-                        help='Define the square image resolution (default: 700)')
+                        help='define the image resolution.')
 
-    parser.add_argument('-b', '--accessible', help='Overlay the output scene with (B)lue accessible space (default: False)',
+    parser.add_argument('-b', '--accessible', help='overlay the output scene with (B)lue accessible space.',
                         action='store_true')
 
-    parser.add_argument('-l', '--path', help='Overlay the output scene with robot path (L)ine (default: False)',
+    parser.add_argument('-l', '--path', help='overlay the output scene with robot path (L)ine.',
                         action='store_true')
 
-    parser.add_argument('-a', '--interaction', help='Overlay the output scene with (A)ffordance (default: False)',
+    parser.add_argument('-a', '--interaction', help='visualize the pseudo-inter(A)ction function for each object.',
                         action='store_true')
 
-    parser.add_argument('-c', '--color', help='(C)olor-code the funiture in the output scene.) (default: False)',
+    parser.add_argument('-c', '--color', help='(C)olor-code the objects by whether they are accessible to the robot.',
                         action='store_true')
 
     parser.add_argument('--robot', type=str, default='dingo',

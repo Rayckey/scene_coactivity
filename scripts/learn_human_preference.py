@@ -243,21 +243,21 @@ if __name__ == '__main__':
 
     room_options = ["living", "office", "bedroom"]
     parser.add_argument('-r', '--room', type=str, default='bedroom', choices=room_options,
-                        help='define room type to be iterated (default: bedroom, options: living, office, bedroom)')
+                        help='define room category to be iterated (options: living, office, bedroom)')
 
-    parser.add_argument('-i', '--images', help='Generate top-down images for the rooms (default: False)',
+    parser.add_argument('-i', '--images', help='generate top-down images for the rooms as it collects data.',
                         action='store_true')
 
-    parser.add_argument('-g', '--graph', help='Generate scene graghs for the rooms (default: False)',
+    parser.add_argument('-g', '--graph', help='generate scene gragh visualization as it collects data.',
                         action='store_true')
 
-    parser.add_argument('-c', '--collect', help='Collect furniture positions from SUNCG (default: False)',
+    parser.add_argument('-c', '--collect', help='collect object spatial information from SUNCG, needed for -p and -o',
                         action='store_true')
 
-    parser.add_argument('-p', '--pos', help='Learn the spatial relation (default: False)',
+    parser.add_argument('-p', '--pos', help="learn the distribution of the objects' relative poses.",
                         action='store_true')
 
-    parser.add_argument('-o', '--occ', help='Learn the co-occurance relation (default: False)',
+    parser.add_argument('-o', '--occ', help="learn the objects' spatial co-occurrence",
                         action='store_true')
 
     args = parser.parse_args()
