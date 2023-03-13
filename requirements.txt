@@ -14,8 +14,7 @@ requests==2.18.4
 scikit_image==0.19.2
 scikit_learn==1.2.1
 scipy==1.5.2
-setuptools==39.0.1
-skimage==0.0
+setuptools
 tqdm==4.50.2
 transforms3d==0.3.1
 trimesh==3.12.5

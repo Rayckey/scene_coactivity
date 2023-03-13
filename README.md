@@ -28,6 +28,12 @@ source coactivity/bin/activate
 pip3 install -r requirements.txt # or pip if you don't have python 2 installed
 ```
 
+if you run into an error in installing requirements related to lapack/blas resources, you may need to install the coresponding packages first using:
+
+```bash
+sudo apt-get install -y libopenblas-dev gfortran
+```
+
 SunCG dataset is needed for visualization, unforturantly it is not avaliable anymore.
 
 If you have it downloaded, unzip all the folders in a location of your choice, then modify the following paths in ``configs/dataset_paths.yaml``
