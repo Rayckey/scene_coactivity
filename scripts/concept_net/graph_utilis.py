@@ -465,10 +465,6 @@ def findEndNodes(g: DiGraph):
     return list(np.where([x == 0 for x in g.degree(mode='out')])[0])
 
 
-def findRootNodes(g: DiGraph):
-    return list(np.where([x == 0 for x in g.degree(mode='in')])[0])
-
-
 def findCentralFurniture(g: DiGraph):
     # idx = findEndNodes(g)
     return findEndNodes(g)

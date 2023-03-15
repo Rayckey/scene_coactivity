@@ -160,7 +160,6 @@ class SceneInformation(NamedTuple):
     robot: dict
     seg_map: dict
     grouping_order: dict
-    # poses: dict
     task_config: TaskConfig
 
 

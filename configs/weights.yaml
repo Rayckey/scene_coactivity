@@ -1,6 +1,6 @@
 WEIGHTS: 
   collision: 10.0
-  affordance: 5.0
+  interaction: 5.0
   anti: 15.0
   planning: 1.0
   relation: 10.0

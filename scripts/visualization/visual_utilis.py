@@ -5,7 +5,7 @@ import pyvista as pv
 import csv
 import skimage
 from skimage.transform import rescale
-from scene_manager.gen_scene_utils import findDoorSem, room2networkx
+from scene_manager.gen_scene_utils import findDoorSem
 from concept_net.graph_utilis import *
 from sampling.sampling_utilis import AdaptiveAnnealingConfig, ResultHistory
 from scipy.spatial.transform import Rotation

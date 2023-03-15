@@ -1,5 +1,5 @@
 # Rearrange Indoor Scenes for Human-Robot Co-Activity
-![18](https://img.shields.io/badge/Ubuntu-18.04-blue) ![20](https://img.shields.io/badge/Ubuntu-20.04-blue) ![22](https://img.shields.io/badge/Ubuntu-22.04-blue) ![py](https://img.shields.io/badge/Python-3.8+-green)
+![18](https://img.shields.io/badge/Ubuntu-18.04-blue) ![20](https://img.shields.io/badge/Ubuntu-20.04-blue) ![22](https://img.shields.io/badge/Ubuntu-22.04-blue) ![py](https://img.shields.io/badge/Python-3.8-green) ![py](https://img.shields.io/badge/Python-3.9-green) ![py](https://img.shields.io/badge/Python-3.10-green)
 
 This is an optimization-based framework for rearranging indoor furniture to accommodate human-robot co-activities better. The rearrangement aims to afford sufficient accessible space for robot activities without compromising everyday human activities.
 
@@ -16,7 +16,7 @@ This is an optimization-based framework for rearranging indoor furniture to acco
 # Setup
 
 ## System Requirement
-Tested on clean ubuntu 18.04 & 20.04 with Python 3.8+. 
+Tested on clean ubuntu 18.04 & 20.04 with Python 3.8 & 3.9. 
 
 ## Install
 Please set up a virtual environemnt first
@@ -50,7 +50,7 @@ MODEL_PATH : ....../object
 ## Learning Human Preference
 This script collects pre-compiled SUNCG room data and learns the human preference. The learned binaries are already included in this git repo.
 
-Example of collecting the bedroom data and learning the spatial co-occurrence:
+Example of collecting the bedroom data and learning the spatial co-occurrence (32 GB RAM recommended):
 ```bash
 python3 scripts/learn_human_preference.py -r bedroom -c -p -o
 ```
@@ -73,7 +73,7 @@ You can perform scene rearrangement using this script. There are some rooms alre
 
 Example, performing rearrangement on `living_381` with bullet GUI on:
 ```bash
-python3 scripts/rearrange_suncg_scene.py --room living --idx 381 --GUI
+python3 scripts/rearrange_suncg_scene.py --room living --idx 381 --GUI True
 ```
 Arguments:
 | Parameter                 | Default       | Description   |	

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from cmath import isnan
 import numpy as np
 import pickle
 from scipy import ndimage
@@ -389,26 +388,15 @@ class SceneManager():
         if 'interaction' in self.objectives:
             # not using the extended sdf to save memory, hope this works well
             aff = 0
-            # aff_total = 0
-            # cc = []
-            # use_sdf = object_sdf if reachability_sdf is None else reachability_sdf
-            # use_sdf = (object_sdf-self.robot['size']) * np.array(object_sdf-self.robot['size'] > 0).astype('float')
-            # use_sdf = reachability_sdf * \
-            #     np.array(reachability_sdf > 0).astype('float')
+
             use_sdf = reachability_sdf
             # use_sdf = object_sdf
             for id in self.interact.keys():
                 aff_total = self.interact_buffer[id]['best']
-                # aff += np.sum(getCenteredSDF(
-                #     self.interact[id], self.w, self.h) * use_sdf)
+
                 aff = np.sum(getCenteredSDF(
                     self.interact[id], self.w, self.h) * use_sdf)
 
-                # cc.append(ratio_cost(aff_total-aff, aff_total))
-
-            # aff_cost = WEIGHTS['interaction'] * np.sum(cc)/len(cc)
-                # aff_cost = WEIGHTS['interaction'] * ratio_cost(aff_total-aff, aff_total)
-            # aff_cost = WEIGHTS['interaction'] * (1.0 - low_satuating_cost(aff))*2
                 aff_cost = WEIGHTS['interaction'] * \
                     (1.0 - low_satuating_cost(aff))*2
                 cost += aff_cost
@@ -420,11 +408,9 @@ class SceneManager():
                 np.array(self.wall_buffer_enlarged < 0).astype('float')
             for id in self.anti.keys():
                 ant_total = self.anti_buffer[id]['best']
-                # ant += np.sum(self.anti[id] * object_sdf_pad)
+
                 ant = np.sum(self.anti[id] * use_sdf)
 
-                # ant_cost = WEIGHTS['anti'] * \
-                #     ratio_cost(ant_total-ant, ant_total)  # TODO
                 ant_cost = WEIGHTS['anti'] * (1.0 - low_satuating_cost(ant))*2
                 cost += ant_cost
 
@@ -885,16 +871,6 @@ class SceneManager():
                                FRONTOF=FRONTOF, FACING=FACING, PARALLEL=PARALLEL,
                                CLOSETOBOUND=CLOSETOBOUND, FACINGBOUND=FACINGBOUND)
 
-                # CONCEPT = 0.
-                # if self.concept.has_edge(self.furniture_info.nodes()[id1]['cat'].replace("_", " "), self.furniture_info.nodes()[id2]['cat'].replace("_", " ")):
-                #     CONCEPT = self.concept[self.furniture_info.nodes()[id1]['cat'].replace(
-                #         "_", " ")][self.furniture_info.nodes()[id2]['cat'].replace("_", " ")]['weight']
-
-                # # normalized
-                # graph.add_edge(id1, id2, NEXTTO=1.0-sigmoid(NEXTTO), CLOSETO=1.0-sigmoid(CLOSETO),
-                #                AXISOF=1.0-linear(AXISOF), FRONTOF=1.0-linear(FRONTOF), SIDEOF=1.0-linear(SIDEOF),
-                #                BACKOF=1.0-linear(BACKOF), FACING=1.0-linear(FACING), PARALLEL=1.0-linear(PARALLEL),
-                #                AGAINST=1.0-linear(AGAINST), SHARED=SHARED, SHARED_MAX=SHARED_MAX, CONCEPT=CONCEPT)
         return graph
 
     def getNexttoCost(self, idx_n, idx_p):

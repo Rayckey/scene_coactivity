@@ -12,9 +12,9 @@ pyvista==0.36.1
 PyYAML==6.0
 requests==2.18.4
 scikit_image==0.19.2
-scikit_learn==1.2.1
+scikit_learn==1.2.2
 scipy==1.5.2
-setuptools
+setuptools==58.1.0
 tqdm==4.50.2
 transforms3d==0.3.1
 trimesh==3.12.5
