@@ -1,0 +1,29 @@
+RELATIONS:
+  - AtLocation
+  - IsA
+  - LocatedNear
+  - RelatedTo
+  - HasPrerequisite
+  - PartOf
+  - MotivatedByGoal
+  - HasContext
+  - CausesDesire
+  - UsedFor
+  - HasA
+  - Causes
+  - CapableOf
+  - ObstructedBy
+
+VALID_RELATIONS:
+  - LocatedNear
+  - HasPrerequisite
+  - MotivatedByGoal
+  - HasContext
+  - CausesDesire
+  - UsedFor
+  - Causes
+  - CapableOf
+
+NOT_VALID_RELATIONS:
+  - IsA
+  - Synonym

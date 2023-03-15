@@ -1,0 +1,32 @@
+.idea/
+.catkin_tools/
+.vscode/
+venv/
+
+# Ignore generated docs
+*.dox
+*.wikidoc
+
+# eclipse stuff
+.project
+.cproject
+
+
+# #debug images
+# *.png
+
+*.pcd
+*.pyc
+*~
+
+# btemp
+src/outcmaes
+outcmaes
+
+# Emacs
+.#*
+
+# docker
+Dockerfile
+.dockerignore
+coactivity/

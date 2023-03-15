@@ -1,0 +1,14 @@
+WEIGHTS: 
+  collision: 10.0
+  affordance: 5.0
+  anti: 15.0
+  planning: 1.0
+  relation: 10.0
+CONSTANTS:
+  low: 0.05
+  lower: 0.01
+  SMALL_OFFSET: 0.001
+  LARGE_OFFSET: 100.
+  CLEARANCE: 0.01
+  ORIENT_STEP: 0.78539816339
+  MAXIMUN_RETRIES: 50

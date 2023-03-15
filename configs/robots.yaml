@@ -1,0 +1,14 @@
+# size: the base radius
+# reach: the arm reach from center of base
+
+dingo:
+  name: dingo
+  size: 0.326
+  reach: 0.655
+  description: A ur5 manipulator mounted on a dingo robot
+
+husky:
+  name: husky
+  size: 0.595
+  reach: 0.85
+  description: A ur10 manipulator mounted on a husky robot

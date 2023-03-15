@@ -1,0 +1,92 @@
+FIXED: # objects that are not moveable
+  - empty
+  - wall
+  - ceiling
+  - floor
+  - kitchen_cabinet
+  - toilet
+  - stairs
+  - towel_rack
+  - range_hood
+  - fireplace
+  - switch
+  - partition
+  - headstone
+  - coffin
+  - column
+  - fence
+  - basketball_hoop
+  - outdoor_seating
+  - bathtub
+  - bench_chair
+  - workplace
+  - whiteboard
+  - pool
+  - ATM
+  - goal_post
+  - arch
+  - roof
+  - towel_hanger
+  - rifle_on_wall
+  - outdoor_spring
+  - drinkbar
+  - surveillance_camera
+  - mailbox
+  - door
+  - heater
+
+DOORS: # act as entry points for the robot
+  - arch
+  - door
+
+HIGHUP: # unrelated fixtures 
+  - range_hood
+  - basketball_hoop
+  - range_hood_with_cabinet
+  - window
+  - range_oven_with_hood
+  - mirror
+  - wall_lamp
+  - hanging_kitchen_cabinet
+  - ceiling_fan
+  - chandelier
+  - curtain
+  - air_conditioner
+  - switch
+
+LOWERDOWN:
+  - rug
+
+IGNORED: # objects that are not relevant to this problem
+  - rug
+  - window
+  - person
+  - picture_frame
+  - clock
+  - curtain
+  - pet
+  - arch
+  - books
+  - partition
+  - switch
+
+ISOLATED: # objects that show up seldomly, tend to throw off the optimzation
+  - door
+  - window
+  - arch
+  - switch
+  - cup
+  - bottle
+  - cutting_board
+  - chessboard
+
+STATIC_CAT:
+  - stairs
+  
+# BROKEN:
+#   desk  - dining table)
+#  - (sofa  - desk)
+#  - (sofa  - office chair)
+#  - (double_bed  - wardrobe_cabinet),
+# (sofa   - dresser)
+#  - (shelving - sofa)]

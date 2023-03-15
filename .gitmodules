@@ -1,0 +1,6 @@
+[submodule "scripts/scene_manager/astar"]
+	path = scripts/scene_manager/astar
+	url = git@github.com:jrialland/python-astar.git
+[submodule "scripts/scene_manager/sdf_lib"]
+	path = scripts/scene_manager/sdf_lib
+	url = git@github.com:Rayckey/sdf.git
