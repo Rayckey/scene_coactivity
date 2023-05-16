@@ -21,7 +21,7 @@ from scipy.stats import (
 
 def gather_spatialnx(room_type, GUI, gen_images, gen_graph, collect):
     test_rooms = []
-    with open('test_rooms_id.csv', 'r') as f:
+    with open('selected_rooms.csv', 'r') as f:
         csv_data = csv.reader(f)
         for row in csv_data:
             test_rooms.append(row[0])
