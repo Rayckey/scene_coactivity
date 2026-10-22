@@ -79,16 +79,92 @@ Arguments:
 | Parameter                 | Default       | Description   |	
 | :------------------------ |:-------------:| :-------------|
 | --room       |	living           |define room category.
-| --idx         | None          |define the room ID from the selected room category.
+| --idx         | Required          |define the room ID from the selected room category.
 | --GUI 	       |	False	            |define whether the GUI powered by Pybullet will be displayed. This will show the optimization process in real time.
 | --images		       | False           |define whether debug images will be generated.
 | --robot         | dingo           | define the robot's base size (options: dingo, husky)
+| --seed          | None            | set the NumPy and CMA random seeds for repeatable runs in the same environment.
+
+Run these commands from the `scene_coactivity` project root. `--GUI` (also
+`--gui`) and `--images` work as bare flags or with explicit `True` / `False`
+values. For example, a headless run with a fixed seed is:
+
+```bash
+python3 scripts/rearrange_suncg_scene.py --room living --idx 381 --GUI False --seed 42
+```
+
+Missing inputs now produce an error containing the expected path. The result
+directory is created automatically, and the PyBullet connection is closed even
+if optimization fails.
 
 When a room is rearranged for the first time, relevant object semantic relations are queried from [Conceptnet](https://conceptnet.io/) as a part of human preference. This may take some time. Temporary files can be found under ``./buffer``.
 
 Optimization uses the weights defined in ``./configs/weights.yaml``.
 
 The pickle results are generated under ``./results``. The results are distingushed by the order of functional groups and search method. The final results will have the ID of "-1". For example: ``bedroom_473_layered_-1_cma`` is the results for all functional groups after Covariance Matrix Adaptation Evolution Strategy, while ``bedroom_473_layered_3`` is the results for the third functional groups after Adaptive Simulated Annealing.
+
+Each group runs adaptive simulated annealing followed by CMA refinement. The
+whole-scene stage uses the same solver, keeping each group rigid. If CMA is worse,
+the annealing state is restored; the last snapshot in the `_cma` history always
+matches the selected result. Scenes containing only fixed objects skip optimization.
+
+## Development checks
+
+From the project root, install the development tools into your virtual environment
+alongside the project dependencies, then run the regression suite:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest -q tests
+```
+
+The tests cover CLI parsing and loading failures, annealing proposals and saved
+histories, sparse relationship clustering, fixed furniture, CMA result selection,
+and loading a bundled legacy result. They do not call ConceptNet or open a GUI.
+The CLI and annealing tests can run with just NumPy, PyYAML, and pytest; the
+manager tests require the simulation and optimization dependencies.
+
+For just the lightweight tests:
+
+```bash
+python -m pytest -q tests/test_annealing.py tests/test_rearrangement_cli.py
+```
+
+The following static checks cover the rearrangement entry point, optimizer,
+sampler, shared settings, and task records. Ruff checks imports, undefined names,
+mutable defaults, and commented-out code; the selected Pylint checks also catch
+invalid method calls and duplicate definitions. `--isolated` prevents Ruff from
+inheriting settings from a parent project such as Isaac Lab.
+
+```bash
+check_files=(
+  scripts/rearrange_suncg_scene.py
+  scripts/optimization_manager.py
+  scripts/sampling/sampling_utilis.py
+  scripts/scene_manager/config.py
+  scripts/scene_manager/task_types.py
+)
+python -m ruff check --isolated --select F,E9,I,B006,B008,B018,ERA001 \
+  "${check_files[@]}" tests
+PYTHONPATH=scripts python -m pylint --rcfile=/dev/null --disable=all \
+  --enable=E0102,E0601,E0602,E1120,E1121,E1123,E1124 --reports=n --score=n \
+  "${check_files[@]}"
+```
+
+Check syntax across all project scripts, excluding the bundled A* and SDF
+submodules, and check whitespace in the diff:
+
+```bash
+python -m compileall -q -x '/(astar|sdf_lib)/' scripts
+git diff --check
+```
+
+The main entry point is `scripts/rearrange_suncg_scene.py`.
+`scripts/optimization_manager.py` prepares groups and runs the shared two-stage
+solver; `scripts/sampling/sampling_utilis.py` implements annealing and result
+serialization. Shared settings and task records live in `scene_manager/config.py`
+and `scene_manager/task_types.py`, without importing the simulation stack.
+Task records remain available through `common_utilis` for older pickles.
 
 
 ## Scene Visualization

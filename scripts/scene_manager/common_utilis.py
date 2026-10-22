@@ -17,29 +17,13 @@ from scene_manager.sdf_utilis import *
 from skimage.morphology import erosion, dilation, closing, opening, area_closing, area_opening
 from skimage.measure import label
 from scene_manager.astar.astar import *
+from scene_manager.config import (
+    BROKEN, CLEARANCE, CONSTANTS, HIGHUP, IGNORED, ISOLATED,
+    LARGE_OFFSET, MAXIMUN_RETRIES, ROBOTS, SMALL_OFFSET, WEIGHTS,
+)
+from scene_manager.task_types import TaskConfig, TaskInfo
 
 scipy_version = version.parse(scipy.version.version)
-
-
-with open('./configs/exceptions.yaml', 'r') as file:
-    exceptions = yaml.safe_load(file)
-    HIGHUP = exceptions['HIGHUP']
-    IGNORED = exceptions['IGNORED']
-    # BROKEN = exceptions['BROKEN']
-    BROKEN = []
-    ISOLATED = exceptions['ISOLATED']
-
-with open('./configs/weights.yaml', 'r') as file:
-    weights = yaml.safe_load(file)
-    CONSTANTS = weights['CONSTANTS']
-    CLEARANCE = weights['CONSTANTS']['CLEARANCE']
-    SMALL_OFFSET = weights['CONSTANTS']['SMALL_OFFSET']
-    LARGE_OFFSET = weights['CONSTANTS']['LARGE_OFFSET']
-    WEIGHTS = weights['WEIGHTS']
-    MAXIMUN_RETRIES = weights['CONSTANTS']['MAXIMUN_RETRIES']
-
-with open('./configs/robots.yaml', 'r') as file:
-    ROBOTS = yaml.safe_load(file)
 
 
 def quat_to_xyzw(orn, seq):
@@ -143,17 +127,6 @@ def genereate_pairwise_relation(states, id_keys):
 #     seg_map: dict
 #     groups: list
 #     poses: dict
-
-class TaskInfo(NamedTuple):
-    task_type: str
-    pose: np.array
-    item_id: int
-
-
-class TaskConfig(NamedTuple):
-    tasks: list
-    pose_init: np.array
-
 
 class SceneInformation(NamedTuple):
     furniture_info: nx.DiGraph
